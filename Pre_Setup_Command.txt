@@ -1,0 +1,5 @@
+npm start
+npm i -s axios
+​npm install bootstrap
+​npm i react-datepicker
+npm i -s redux react-redux redux-thunk
