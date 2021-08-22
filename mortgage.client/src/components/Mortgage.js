@@ -64,8 +64,11 @@ const MortgageForm = ({ classes, ...props }) => {
       return Object.values(validationErrors).every((x) => x === "");
   };
 
-  const { values, errors, setErrors, handleInputChange, resetForm } =
-    useForm(initialFieldValues, validate, props.setCurrentId);
+  const { values, errors, setErrors, handleInputChange, resetForm } = useForm(
+    initialFieldValues,
+    validate,
+    props.setCurrentId
+  );
 
   //material-ui select
   const inputLabel = React.useRef(null);
@@ -84,12 +87,14 @@ const MortgageForm = ({ classes, ...props }) => {
       props.createMortgage(values, onSuccess);
     }
   };
- 
+
   return (
-    <div style={{
-      boxShadow: 1,
-      border: "1px solid black",
-    }}>
+    <div
+      style={{
+        boxShadow: 1,
+        border: "1px solid black",
+      }}
+    >
       <form
         autoComplete="off"
         noValidate
@@ -114,7 +119,7 @@ const MortgageForm = ({ classes, ...props }) => {
           </Grid>
           <Grid item xs={6}>
             <FormControl variant="outlined" className={classes.formControl}>
-            <Select
+              <Select
                 name="mortgageType"
                 value={values.mortgageType}
                 onChange={handleInputChange}
@@ -182,6 +187,16 @@ const MortgageForm = ({ classes, ...props }) => {
       </form>
       <div>
         <Button
+          style={{ float: "left" }}
+          variant="contained"
+          color="primary"
+          type="submit"
+          className={classes.smMargin}
+          onClick={(event) => (window.location.href = "/")}
+        >
+          Previous
+        </Button>
+        <Button
           style={{ float: "right" }}
           variant="contained"
           color="primary"
@@ -197,7 +212,7 @@ const MortgageForm = ({ classes, ...props }) => {
 };
 
 const mapActionToProps = {
-  createMortgage: actions.createMortgage
+  createMortgage: actions.createMortgage,
 };
 
 export default connect(
